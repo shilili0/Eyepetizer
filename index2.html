@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> CSS+jQuery动画效果 </title>
+    <meta name="Generator" content="EditPlus">
+    <meta name="Author" content="铁锚">
+    <style>
+        body{
+            z-index: 0;
+            width: 100%;
+            min-height: 400px;
+        }
+        .pages{
+            position: absolute;
+        }
+        .current{
+            position: absolute;
+            z-index: 12 !important;
+            left: 0px !important;
+        }
+        .page1{
+            background-color: #a5cfff;
+            z-index: 1;
+            width: 300px;
+            height:280px;
+            top: 100px;
+            left: 0px;
+        }
+        .page2{
+            background-color: #b1ca54;
+            z-index: 2;
+            width: 250px;
+            height:270px;
+            top: 160px;
+            left: 0px;
+        }
+        .page3{
+            background-color: #c2c6c9;
+            z-index: 3;
+            width: 200px;
+            height:260px;
+            top: 220px;
+            left: 0px;
+        }
+        .page4{
+            background-color: #ef9e9c;
+            z-index: 4;
+            width: 150px;
+            height:250px;
+            top: 250px;
+            left: 0px;
+        }
+    </style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script>
+        $(function(){
+// 增长
+            function increase($div,e){
+                var expstatus = $div.data("expstatus");
+                if(!expstatus){
+// 没有展开过
+                    $div.data("expstatus","yes");
+                }
+                var style = $div.attr("style");
+                $div.addClass("current").attr("styleold",style);
+//
+                $div.stop();
+                $div.animate({
+                            opacity:0.9,
+                            width:"400px",
+                            height: "400px",
+                            top: "100px",
+                            left: "0px"
+                        },600)
+                        .animate({
+                            opacity:1.0
+                        },30);
+
+                e.stopPropagation();
+                return false;
+            };
+// 还原
+            function resize(e){
+// 所有的都移除
+                var $page1 = $(".current.page1") ;
+                $page1.stop();
+                $page1.animate({
+                    opacity:1.0,
+                    width:"300px",
+                    height: "280px",
+                    top: "100px",
+                    left: "0px"
+                },600,null,function(){
+                    $page1.removeClass("current").attr("style","");
+                });
+
+                var $page2 = $(".current.page2") ;
+                $page2.stop();
+                $page2.animate({
+                    opacity:1.0,
+                    width:"250px",
+                    height: "270px",
+                    top: "160px",
+                    left: "0px"
+                },600,null,function(){
+                    $page2.removeClass("current").attr("style","");
+                });
+
+                var $page3 = $(".current.page3") ;
+                $page3.stop();
+                $page3.animate({
+                    opacity:1.0,
+                    width:"200px",
+                    height: "260px",
+                    top: "220px",
+                    left: "0px"
+                },600,null,function(){
+                    $page3.removeClass("current").attr("style","");
+                });
+
+                var $page4 = $(".current.page4") ;
+                $page4.stop();
+                $page4.animate({
+                    opacity:1.0,
+                    width:"150px",
+                    height: "250px",
+                    top: "250px",
+                    left: "0px"
+                },600,null,function(){
+                    $page4.removeClass("current").attr("style","");
+                });
+//
+
+                var expstatus1 = $page1.data("expstatus");
+                if(expstatus1){
+                    $page1.data("expstatus",null);
+                }
+                var expstatus2 = $page2.data("expstatus");
+                if(expstatus2){
+                    $page2.data("expstatus",null);
+                }
+                var expstatus3 = $page3.data("expstatus");
+                if(expstatus3){
+                    $page3.data("expstatus",null);
+                }
+                var expstatus4 = $page4.data("expstatus");
+                if(expstatus4){
+                    $page4.data("expstatus",null);
+                }
+
+                if(e){
+                    e.stopPropagation();
+                    return false;
+                } else {
+                    return true;
+                }
+            };
+//
+            $("#button1").unbind("mouseover").bind("mouseover",function(e){
+//
+                var $page1 = $(".page1");
+// 添加特定的
+                return increase($page1,e);
+
+            }).unbind("mouseout").bind("mouseout",function(e){
+                return resize(e);
+
+            });
+//
+            $("#button2").unbind("mouseover").bind("mouseover",function(e){
+//
+                var $page2 = $(".page2");
+// 添加特定的
+                return increase($page2,e);
+
+            }).unbind("mouseout").bind("mouseout",function(e){
+                return resize(e);
+            });
+//
+            $("#button3").unbind("mouseover").bind("mouseover",function(e){
+//
+                var $page3 = $(".page3");
+// 添加特定的
+                return increase($page3,e);
+
+            }).unbind("mouseout").bind("mouseout",function(e){
+                return resize(e);
+            });
+//
+            $("#button4").unbind("mouseover").bind("mouseover",function(e){
+//
+                var $page4 = $(".page4");
+// 添加特定的
+                return increase($page4,e);
+
+            }).unbind("mouseout").bind("mouseout",function(e){
+                return resize(e);
+            });
+
+//
+            $(".pages").unbind("mouseover").bind("mouseover",function(e){
+//
+                var $this = $(this);
+// 添加特定的
+//return increase($this,e);
+            }).unbind("mouseout").bind("mouseout",function(e){
+// 所有的都移除
+//return resize(e);
+            });
+// 新的
+            $(".pages").unbind("click touchstart").bind("click touchstart",function(e){
+//
+                var $this = $(this);
+                var expstatus = $this.data("expstatus");
+                if(!expstatus){
+// 没有展开过
+//
+                    return increase($this,e);
+                } else {
+                    return resize(e);
+                }
+            });
+//
+            $("body").click(function(e){
+// 所有的都移除
+                return resize(null);
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div class="pages page1">page1</div>
+<div class="pages page2">page2</div>
+<div class="pages page3">page3</div>
+<div class="pages page4">page4</div>
+
+<div style="background-color: #a5cfff;">
+    <button id="button1">第一页</button>
+    <button id="button2">第2页</button>
+    <button id="button3">第3页</button>
+    <button id="button4">第4页</button>
+</div>
+</body>
+</html>

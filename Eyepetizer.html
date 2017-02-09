@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" ng-app="kaiyan">
+<head>
+    <meta charset="UTF-8">
+    <title>开眼-Eyepetizer</title>
+    <!--适应手机界面，不允许用户手动缩放-->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!--取消禁止某长度内的数字为电话号码-->
+    <meta name="format-detection" content="telephone=no" />
+    <!--iphone的私有标签-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="style.css" rel="stylesheet">
+    <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+    <!--<script type="text/javascript" src="util.js"></script>-->
+
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="style.js"></script>
+ <!--   <script type="text/javascript">
+        var app = angular.module('kaiyan', []);
+
+        app.controller('eye', function ($scope, $http) {
+            $http.get('http://baobab.kaiyanapp.com/api/v1/feed').success(function (data) {
+
+                var videoList = data.dailyList[0].videoList;
+                $scope.videoList = videoList;
+
+                console.log(videoList);
+            }).error(function(){
+                alert("提交失败");
+            })
+        })
+    </script>-->
+</head>
+<body ng-controller="eye">
+<header><div class="head"><img src="img/0.png" class="headImg"></div></header>
+<div class="content" >
+    <a href="video.html" ng-repeat="video in videoList">
+        <div class="video" style="background-image: url('{{video.coverForDetail}}')">
+            <div class="title">{{ video.title}}</div>
+            <div class="smallTitle">#{{video.category}}/{{ video.duration*1000 | date: "mm:ss"}}</div>
+        </div>
+    </a>
+    <!--<a href="video.html">
+        <div class="video">
+            <div class="title">特条｜「爱乐之城」终极预告</div>
+            <div class="smallTitle">#预告/2'43"</div>
+        </div>
+    </a>
+    <a href="video.html">
+        <div class="video">
+            <div class="title">特条｜「爱乐之城」终极预告</div>
+            <div class="smallTitle">#预告/2'43"</div>
+        </div>
+    </a>-->
+</div>
+</body>
+</html>

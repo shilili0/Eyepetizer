@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开眼-Eyepetizer</title>
+    <!--适应手机界面，不允许用户手动缩放-->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!--取消禁止某长度内的数字为电话号码-->
+    <meta name="format-detection" content="telephone=no" />
+    <!--iphone的私有标签-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="style.css" rel="stylesheet">
+    <link href="font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="style.js"></script>
+</head>
+<body>
+    <div class="videoContent" id="content">
+        <div class="videoImg1"></div>
+        <div class="videoPlay" id="videoPlay" onclick="play(this)">
+            <video src="http://baobab.kaiyanapp.com/api/v1/playUrl?vid=13986&editionType=normal&source=ucloud" controls autopla="false"></video>
+            <div class="videoImg"></div>
+            <div class="play"></div>
+            <a href="Eyepetizer.html"><div class="back"><i class="fa fa-arrow-circle-o-left"></i></div></a>
+        </div>
+        <div class="videoInfo">
+            <!--<div class="videoImg1"></div>-->
+            <div class="videoTitle">
+                <div class="videoTitleLeft">
+                    <div class="leftTitle">特条｜「爱乐之城」终极预告</div>
+                    <div class="leftSmallTitle">#预告/2'43"</div>
+                </div>
+                <!--<div class="videoTitleRight">
+                    <i class="fa fa-angle-up"></i>
+                </div>-->
+                <hr>
+                <p class="description">
+                    年度最受期待电影「爱乐之城」将于 2 月 14 日浪漫献映。
+                    预告片将影片中华丽的镜头展现得淋漓尽致，色彩明亮的画面，美轮美奂的布景，艳丽优雅的舞裙、
+                    燃情和动人的音乐完全带给观众一场无与伦比的视听盛宴。
+                </p>
+            </div>
+        </div>
+        <div class="Msg">
+                <span class="MsgInfo">
+                       <i class="fa fa-heart-o"></i>161
+                </span>
+                <span class="MsgInfo">
+                       <i class="fa fa-upload"></i>161
+                </span>
+                <span class="MsgInfo">
+                      <i class="fa fa-comment"></i>161
+                </span>
+                <span class="MsgInfo">
+                      <i class="fa fa-download"></i>161
+                </span>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        var width,height;
+        if(window.innerWidth) {
+            width = window.innerWidth;
+            height = window.innerHeight;
+        }else {
+            width = document.documentElement.clientWidth;
+            height = document.documentElement.clientHeight;
+        }
+        console.log(1);
+        console.log(width);
+        document.getElementById("content").style.width = width + 'px';
+        document.getElementById("content").style.height = height + 'px';
+    </script>
+</body>
+</html>

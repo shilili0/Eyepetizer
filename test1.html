@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开眼-Eyepetizer</title>
+    <!--适应手机界面，不允许用户手动缩放-->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!--取消禁止某长度内的数字为电话号码-->
+    <meta name="format-detection" content="telephone=no" />
+    <!--iphone的私有标签-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--<link href="style.css" rel="stylesheet">-->
+</head>
+<body>
+<h1>我们是中国人我们是中国人我们是中国人我们是中国人
+    我们是中国人我们是中国人我们是中国人我们是中国人</h1>
+<style type="text/css">
+    @keyframes typing {
+        from {
+            width:0;
+        }
+    }
+    h1{
+        width:100%;
+        overflow: hidden;
+        /*white-space: nowrap;*/
+        /*animation: typing 3s steps(15), caret 1s steps(1) infinite;*/
+        animation: typing 1s ;
+        display: -webkit-box;
+        -webkit-line-clamp:2;
+        -webkit-box-orient:vertical ;
+    }
+</style>
+</body>
+</html>
